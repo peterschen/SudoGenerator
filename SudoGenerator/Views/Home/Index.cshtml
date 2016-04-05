@@ -1,0 +1,18 @@
+﻿@using SudoGenerator.App.Classes
+@model Configuration
+
+<h1>Microsoft System Center Operations Manager sudo Generator</h1>
+@{
+    if (Model.HasConfiguration)
+    {
+        <h3>Configuration</h3>
+        <samp>@Html.Raw(Model.ToString().Replace("\n", "<br />"))</samp>
+    }
+    else
+    {
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper nisi vel magna lacinia tempor. In a facilisis lectus. Duis placerat congue facilisis. Aenean vel nulla consectetur, cursus libero sed, eleifend mi. Nulla et dictum tortor, vel bibendum orci. Nulla facilisi. Cras egestas accumsan purus, eu hendrerit nisl commodo quis. Mauris volutpat vel quam ut pharetra. Curabitur fringilla blandit tellus sit amet dignissim. Ut laoreet libero quis tincidunt vehicula. Donec eu facilisis neque. Etiam erat metus, finibus in est eu, bibendum porttitor massa. Etiam ultrices ex ut purus tincidunt ullamcorper. Nunc maximus vulputate varius. Nunc congue diam id est egestas vulputate. Quisque tincidunt sed elit eu molestie.</p>
+        <p>Quisque elementum vestibulum fermentum. Curabitur sit amet velit quis tortor rutrum suscipit et nec est. Vivamus iaculis cursus risus, quis rutrum tortor tincidunt ut. Aliquam erat volutpat. Fusce sem urna, rhoncus at nisi ut, finibus accumsan nunc. Nam a metus sed orci faucibus elementum. Phasellus rhoncus augue purus. Etiam eu neque vitae orci ultrices semper vitae quis metus. Nullam velit augue, ullamcorper ut eros et, vulputate imperdiet libero. Nunc suscipit molestie pellentesque. Vestibulum eu lacus arcu. Nunc dictum dolor justo, posuere ornare dui mollis non. Aenean eleifend sapien eget mi lobortis, quis fermentum est rhoncus.</p>
+    }
+
+    await Html.RenderPartialAsync("GeneratorForm");
+}
