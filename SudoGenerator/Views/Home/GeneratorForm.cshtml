@@ -1,4 +1,4 @@
-﻿@using SudoGenerator.App.Classes
+﻿@using SudoGenerator.Models
 @model Configuration
 
 @{
@@ -28,16 +28,20 @@
     <div class="form-group">
         <label for="productVersion">Product Version</label>
         @Html.DropDownListFor(c => c.ProductVersion, new SelectList(productVersions, "Key", "Value"), new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.ProductVersion)
     </div>
 
     <div class="form-group">
         <label for="version">Operating System</label>
         @Html.DropDownListFor(c => c.OperatingSystem, new SelectList(operatingSystems, "Key", "Value"), new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.OperatingSystem)
     </div>
 
     <div class="form-group">
         <label for="version">Monitoring User</label>
-        @Html.TextBoxFor(c => c.MonitoringUser, new { @class = "form-control", placeholder = "monuser" })
+        @Html.TextBoxFor(c => c.MonitoringUser, new { @class = "form-control", placeholder = "The user which is used for monitoring (e.g. monuser)" })
+        @*@Html.ValidationMessageFor(c => c.MonitoringUser, null, new { @class = "alert alert-danger" })*@
+        @Html.ValidationMessageFor(c => c.MonitoringUser)
     </div>
 
     <label>Options</label>

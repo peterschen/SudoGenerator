@@ -1,11 +1,14 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace SudoGenerator.App.Classes
+namespace SudoGenerator.Models
 {
     public class Configuration
     {
         public string ProductVersion { get; set;}
         public string OperatingSystem { get; set; }
+
+        [Required]
         public string MonitoringUser { get; set; }
         public bool IncludeMaintenance { get; set; }
         public bool IncludeLogs { get; set; }
@@ -15,7 +18,7 @@ namespace SudoGenerator.App.Classes
 
         public void Generate()
         {
-            if(ProductVersion != null && OperatingSystem != null && !string.IsNullOrEmpty(MonitoringUser) && (IncludeMaintenance || IncludeLogs || IncludeSamples))
+            if(ProductVersion != null && OperatingSystem != null && !string.IsNullOrEmpty(MonitoringUser))
             {
                 HasConfiguration = true;
             }

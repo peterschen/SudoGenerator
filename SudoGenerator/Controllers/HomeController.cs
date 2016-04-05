@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
-using SudoGenerator.App.Classes;
+using SudoGenerator.Models;
 
-namespace SudoGenerator.App.Controllers
+namespace SudoGenerator.Controllers
 {
     public class HomeController : Controller
     {
