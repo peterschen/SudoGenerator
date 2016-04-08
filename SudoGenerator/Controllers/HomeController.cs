@@ -5,7 +5,12 @@ namespace SudoGenerator.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(Configuration configuration)
+        public IActionResult Index()
+        {
+            return View(new Configuration());
+        }
+
+        public IActionResult Configuration(Configuration configuration)
         {
             configuration.Generate();
             return View(configuration);
