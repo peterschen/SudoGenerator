@@ -1,0 +1,17 @@
+﻿@using SudoGenerator.Models
+@model Configuration
+
+<h1>Configuration</h1>
+@{
+    if (Model.HasConfiguration)
+    {
+        <samp>@Html.Raw(Model.GetConfiguration().Replace("\n", "<br />"))</samp>
+    }
+    else
+    {
+        <p>Your configuration could not be rendered. Please make sure that all required fields are provided and try again.</p>
+        <p>If you think it sould work please <a href="https://github.com/peterschen/SudoGenerator/issues">create an issue.</a></p>
+    }
+
+    await Html.RenderPartialAsync("GeneratorForm");
+}
