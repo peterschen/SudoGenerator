@@ -40,7 +40,7 @@
 
     <div class="form-group">
         <label for="version">Monitoring User</label>
-        @Html.TextBoxFor(c => c.MonitoringUser, new { @class = "form-control", placeholder = "The user which is used for monitoring (e.g. monuser)" })
+        @Html.TextBoxFor(c => c.MonitoringUser, new { @class = "form-control", placeholder = "The user which is used for monitoring" })
         @Html.ValidationMessageFor(c => c.MonitoringUser)
     </div>
 
