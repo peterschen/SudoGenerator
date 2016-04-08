@@ -24,7 +24,7 @@ namespace SudoGenerator.Models
             }
         }
 
-        public override string ToString()
+        public string GetConfiguration()
         {
             var configuration = new StringBuilder();
 

@@ -6,12 +6,19 @@
     if (Model.HasConfiguration)
     {
         <h3>Configuration</h3>
-        <samp>@Html.Raw(Model.ToString().Replace("\n", "<br />"))</samp>
+        <samp>@Html.Raw(Model.GetConfiguration().Replace("\n", "<br />"))</samp>
     }
     else
     {
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper nisi vel magna lacinia tempor. In a facilisis lectus. Duis placerat congue facilisis. Aenean vel nulla consectetur, cursus libero sed, eleifend mi. Nulla et dictum tortor, vel bibendum orci. Nulla facilisi. Cras egestas accumsan purus, eu hendrerit nisl commodo quis. Mauris volutpat vel quam ut pharetra. Curabitur fringilla blandit tellus sit amet dignissim. Ut laoreet libero quis tincidunt vehicula. Donec eu facilisis neque. Etiam erat metus, finibus in est eu, bibendum porttitor massa. Etiam ultrices ex ut purus tincidunt ullamcorper. Nunc maximus vulputate varius. Nunc congue diam id est egestas vulputate. Quisque tincidunt sed elit eu molestie.</p>
-        <p>Quisque elementum vestibulum fermentum. Curabitur sit amet velit quis tortor rutrum suscipit et nec est. Vivamus iaculis cursus risus, quis rutrum tortor tincidunt ut. Aliquam erat volutpat. Fusce sem urna, rhoncus at nisi ut, finibus accumsan nunc. Nam a metus sed orci faucibus elementum. Phasellus rhoncus augue purus. Etiam eu neque vitae orci ultrices semper vitae quis metus. Nullam velit augue, ullamcorper ut eros et, vulputate imperdiet libero. Nunc suscipit molestie pellentesque. Vestibulum eu lacus arcu. Nunc dictum dolor justo, posuere ornare dui mollis non. Aenean eleifend sapien eget mi lobortis, quis fermentum est rhoncus.</p>
+        <p>This generator aims to help you create a sudo configuration which enables your organization to monitor Linux/UNIX based systems with Microsoft System Center Operations Manager.</p>
+        <p>
+            Further documentation on how to add UNIX/Linux agents to a management group can be found on TechNet:
+            <ul>
+                <li><a href="https://blogs.technet.microsoft.com/cbernier/2014/01/10/monitoring-your-unixlinux-servers-with-system-center-operations-manager-2012/">Monitoring your UNIX/Linux Servers with System Center Operations Manager 2012</a></li>
+                <li><a href="http://social.technet.microsoft.com/wiki/contents/articles/7375.configuring-sudo-elevation-for-unix-and-linux-monitoring-with-system-center-2012-operations-manager.aspx">Configuring sudo Elevation for UNIX and Linux Monitoring with System Center 2012 – Operations Manager</a></li>
+            </ul>
+        </p>
+        <p>Currently there are some limitations to this generator and I'm working to add more functionality to it over time. If you have a special need/request feel free to <a href="https://github.com/peterschen/SudoGenerator/issues">create an issue</a> or a <a href="https://github.com/peterschen/SudoGenerator/pulls">pull request</a>.</p>
     }
 
     await Html.RenderPartialAsync("GeneratorForm");
