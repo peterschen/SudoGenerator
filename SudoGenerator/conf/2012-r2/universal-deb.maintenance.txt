@@ -1,0 +1,6 @@
+﻿# Agent maintenance (discovery, install, uninstall, upgrade, restart, certificate signing
+{0} ALL=(root) NOPASSWD: /bin/sh -c cp /tmp/scx-{0}/scx.pem /etc/opt/microsoft/scx/ssl/scx.pem; rm -rf /tmp/scx-{0}; /opt/microsoft/scx/bin/tools/scxadmin -restart
+{0} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{0}/GetOSVersion.sh; EC=$?; rm -rf /tmp/scx-{0}; exit $EC
+{0} ALL=(root) NOPASSWD: /bin/sh -c cat /etc/opt/microsoft/scx/ssl/scx.pem
+{0} ALL=(root) NOPASSWD: /bin/sh -c dpkg -P scx
+{0} ALL=(root) NOPASSWD: /bin/sh -c dpkg -i /tmp/scx-{0}/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].universald.1.x[6-8][4-6].deb; EC=$?; cd /tmp; rm -rf /tmp/scx-{0}; exit $EC
