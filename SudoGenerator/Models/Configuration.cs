@@ -31,18 +31,7 @@ namespace SudoGenerator.Models
             configuration.AppendLine("# -----------------------------------------------------------------------------------");
             configuration.AppendFormat("# User configuration for Operations Manager agent – for a user with the name: {0}\n\n", MonitoringUser);
 
-            if (OperatingSystem != "hpux")
-            {
-                configuration.AppendLine("# General requirements");
-                if (OperatingSystem == "aix" || OperatingSystem == "solaris")
-                {
-                    configuration.AppendFormat("Defaults:{0} passwd_tries = 1, passwd_timeout = 1\n\n", MonitoringUser);
-                }
-                else
-                {
-                    configuration.AppendFormat("Defaults:{0} !requiretty\n\n", MonitoringUser);
-                }
-            }
+            configuration.Append(GenerateConfigurationGeneral());
 
             if (IncludeMaintenance)
             {
@@ -66,6 +55,26 @@ namespace SudoGenerator.Models
             configuration.AppendLine("# -----------------------------------------------------------------------------------");
 
             return configuration.ToString();
+        }
+
+        private string GenerateConfigurationGeneral()
+        {
+            StringBuilder partialConfig = new StringBuilder();
+
+            if (OperatingSystem != "hpux")
+            {
+                partialConfig.AppendLine("# General requirements");
+                if (OperatingSystem == "aix" || OperatingSystem == "solaris")
+                {
+                    partialConfig.AppendFormat("Defaults:{0} passwd_tries = 1, passwd_timeout = 1\n\n", MonitoringUser);
+                }
+                else
+                {
+                    partialConfig.AppendFormat("Defaults:{0} !requiretty\n\n", MonitoringUser);
+                }
+            }
+
+            return partialConfig.ToString();
         }
 
         private string GenerateConfigurationMaintenance()
