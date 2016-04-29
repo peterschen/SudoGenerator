@@ -8,7 +8,7 @@ namespace SudoGenerator.Controllers
     {
         public IActionResult Index()
         {
-            return View(new Configuration());
+            return View(new Configuration { ProductVersion = "2012-r2" });
         }
 
         public IActionResult Configuration(Configuration configuration)
@@ -31,9 +31,9 @@ namespace SudoGenerator.Controllers
         {
             JsonResult data = null;
 
-            if(type == "os")
+            if (type == "os")
             {
-                if(productVersion == "2012-rtm")
+                if (productVersion == "2012-rtm")
                 {
                     data = Json(OperatingSystem.SC2012RTM);
                 }

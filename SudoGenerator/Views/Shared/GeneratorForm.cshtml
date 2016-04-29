@@ -50,13 +50,13 @@
 }
 
 <script type="text/javascript">
-    $("#ProductVersion").change(function () {
-        var data = {
+    function loadData(result) {
+        var payload = {
             type: "os",
             ProductVersion: $("#ProductVersion").val()
         };
 
-        $.getJSON('/Home/Data', data, function (result) {
+        $.getJSON('/Home/Data', payload, function (result) {
             var dropdown = $('#OperatingSystem');
             dropdown.empty();
 
@@ -69,5 +69,13 @@
 
             dropdown.prop("disabled", false);
         });
+    }
+
+    $("#ProductVersion").change(function () {
+        loadData();
+    });
+
+    $(function () {
+        loadData()
     });
 </script>
