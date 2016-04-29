@@ -14,8 +14,9 @@ namespace SudoGenerator.Classes
         public static readonly OperatingSystem SOLARIS = new OperatingSystem("solaris", "Solaris");
         public static readonly OperatingSystem DEB = new OperatingSystem("universal-deb", "Universal .deb (Debian, Ubuntu)");
         public static readonly OperatingSystem RPM = new OperatingSystem("universal-rpm", "Universal .rpm (CentOS, Oracle Linux)");
+        public static readonly OperatingSystem LINUX = new OperatingSystem("linux", "Linux (Red Hat Enterprise Linux / SuSE Linux Enterprise");
 
-        public static readonly List<OperatingSystem> SC2012RTM = new List<OperatingSystem> { AIX, HPUX, RHEL, SLES, SOLARIS };
+        public static readonly List<OperatingSystem> SC2012RTM = new List<OperatingSystem> { AIX, HPUX, LINUX, SOLARIS };
         public static readonly List<OperatingSystem> SC2012R2 = new List<OperatingSystem> { AIX, HPUX, RHEL, SLES, SOLARIS, DEB, RPM };
 
         public OperatingSystem(string id, string value)
