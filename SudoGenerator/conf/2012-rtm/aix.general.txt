@@ -1,0 +1,4 @@
+﻿# General requirements
+Defaults:monuser !requiretty
+Defaults:{MonitoringUser} passwd_tries = 1, passwd_timeout = 1
+
