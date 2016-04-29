@@ -1,24 +1,6 @@
-﻿@using SudoGenerator.Models
+﻿@using SudoGenerator.Classes
+@using SudoGenerator.Models
 @model Configuration
-
-@{
-    var productVersions = new Dictionary<string, string>()
-    {
-        //{ "2012-rtm", "2012 RTM" },
-        { "2012-r2", "2012 SP1 / 2012 R2" },
-    };
-
-    var operatingSystems = new Dictionary<string, string>()
-    {
-        { "aix", "AIX" },
-        { "hpux", "HP-UX" },
-        { "rhel", "Red Hat Enterprise Linux" },
-        { "sles", "SuSE Linux Enterprise Server" },
-        { "universal-deb", "Universal .deb (Debian, Ubuntu)" },
-        { "universal-rpm", "Universal .rpm (CentOS, Oracle Linux)" },
-        { "solaris", "Solaris" },
-    };
-}
 
 <h3>Create Your Configuration</h3>
 <p>Use the following form to create a configuration best suited for your environment and your needs.</p>
@@ -27,13 +9,13 @@
 {
     <div class="form-group">
         <label for="productVersion">Product Version</label>
-        @Html.DropDownListFor(c => c.ProductVersion, new SelectList(productVersions, "Key", "Value"), new { @class = "form-control" })
+        @Html.DropDownListFor(c => c.ProductVersion, new SelectList(ProductVersion.ALL, "Id", "Value"), new { id = "ProductVersion", @class = "form-control" })
         @Html.ValidationMessageFor(c => c.ProductVersion)
     </div>
 
     <div class="form-group">
         <label for="version">Operating System</label>
-        @Html.DropDownListFor(c => c.OperatingSystem, new SelectList(operatingSystems, "Key", "Value"), new { @class = "form-control" })
+        @Html.DropDownListFor(c => c.OperatingSystem, Enumerable.Empty<SelectListItem>(), "Please select Product Version first", new { id = "OperatingSystem", @class = "form-control", disabled = "true"})
         @Html.ValidationMessageFor(c => c.OperatingSystem)
     </div>
 
@@ -66,3 +48,26 @@
         <button type="submit" class="btn btn-primary">Generate</button>
     </div>
 }
+
+<script type="text/javascript">
+    $("#ProductVersion").change(function () {
+        var data = {
+            type: "os",
+            ProductVersion: $("#ProductVersion").val()
+        };
+
+        $.getJSON('/Home/Data', data, function (result) {
+            var dropdown = $('#OperatingSystem');
+            dropdown.empty();
+
+            $(result).each(function () {
+                $(document.createElement('option'))
+                    .attr('value', this.Id)
+                    .text(this.Value)
+                    .appendTo(dropdown);
+            });
+
+            dropdown.prop("disabled", false);
+        });
+    });
+</script>

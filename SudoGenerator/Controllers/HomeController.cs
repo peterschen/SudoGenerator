@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Mvc;
+using SudoGenerator.Classes;
 using SudoGenerator.Models;
 
 namespace SudoGenerator.Controllers
@@ -24,6 +25,25 @@ namespace SudoGenerator.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        public IActionResult Data(string type, string productVersion)
+        {
+            JsonResult data = null;
+
+            if(type == "os")
+            {
+                if(productVersion == "2012-rtm")
+                {
+                    data = Json(OperatingSystem.SC2012RTM);
+                }
+                else if (productVersion == "2012-r2")
+                {
+                    data = Json(OperatingSystem.SC2012R2);
+                }
+            }
+
+            return data;
         }
     }
 }
