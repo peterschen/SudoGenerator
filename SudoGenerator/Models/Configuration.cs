@@ -36,6 +36,7 @@ namespace SudoGenerator.Models
             configuration.AppendFormat("# User configuration for Operations Manager agent – for a user with the name: {0}\n\n", MonitoringUser);
 
             configuration.Append(GenerateConfigurationGeneral());
+            configuration.AppendLine();
 
             if (IncludeMaintenance)
             {
@@ -55,7 +56,7 @@ namespace SudoGenerator.Models
                 configuration.AppendLine();
             }
 
-            configuration.AppendLine("\n# End user configuration for Operations Manager agent");
+            configuration.AppendLine("# End user configuration for Operations Manager agent");
             configuration.AppendLine("# -----------------------------------------------------------------------------------");
 
             return configuration.ToString();
