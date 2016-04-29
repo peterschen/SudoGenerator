@@ -1,0 +1,7 @@
+﻿# Samples
+## Custom shell command monitoring example – replace <shell command> with the correct command string
+#{0} ALL=(root) NOPASSWD: /bin/bash -c <shell command>
+
+## Daemon diagnostic and restart recovery tasks example (using cron)
+#{0} ALL=(root) NOPASSWD: /bin/sh -c ps -ef | grep cron | grep -v grep
+#{0} ALL=(root) NOPASSWD: /usr/sbin/cron &
