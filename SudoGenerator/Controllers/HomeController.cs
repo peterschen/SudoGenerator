@@ -41,6 +41,10 @@ namespace SudoGenerator.Controllers
                 {
                     data = Json(OperatingSystem.SC2012R2);
                 }
+                else if (productVersion == "2016-rtm")
+                {
+                    data = Json(OperatingSystem.SC2016RTM);
+                }
             }
 
             return data;

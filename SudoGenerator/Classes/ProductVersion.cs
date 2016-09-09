@@ -9,8 +9,9 @@ namespace SudoGenerator.Classes
 
         public static readonly ProductVersion OM2012RTM = new ProductVersion("2012-rtm", "2012 RTM");
         public static readonly ProductVersion OM2012R2 = new ProductVersion("2012-r2", "2012 SP1 / 2012 R2");
+        public static readonly ProductVersion OM2016RTM = new ProductVersion("2016-rtm", "2016 TP5 (Beta)");
 
-        public static readonly List<ProductVersion> ALL = new List<ProductVersion> { OM2012RTM, OM2012R2 };
+        public static readonly List<ProductVersion> ALL = new List<ProductVersion> { OM2012RTM, OM2012R2, OM2016RTM };
 
         public ProductVersion(string id, string value)
         {
