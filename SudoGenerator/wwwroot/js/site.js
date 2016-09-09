@@ -10,14 +10,19 @@ function loadData(result) {
     };
 
     $.getJSON('/Home/Data', payload, function (result) {
+        var selectedOperatingSysten = $('#SelectedOperatingSystem').val();
         var dropdown = $('#OperatingSystem');
         dropdown.empty();
 
         $(result).each(function () {
-            $(document.createElement('option'))
+            var option = $(document.createElement('option'))
                 .attr('value', this.id)
                 .text(this.value)
                 .appendTo(dropdown);
+
+            if(this.id == selectedOperatingSysten) {
+                option.attr('selected', 'selected');
+            }
         });
 
         dropdown.prop("disabled", false);

@@ -15,6 +15,7 @@
 
     <div class="form-group">
         <label for="version">Operating System</label>
+        @Html.Hidden("SelectedOperatingSystem", Model.OperatingSystem, new { id = "SelectedOperatingSystem" })
         @Html.DropDownListFor(c => c.OperatingSystem, Enumerable.Empty<SelectListItem>(), "Please select Product Version first", new { id = "OperatingSystem", @class = "form-control", disabled = "true"})
         @Html.ValidationMessageFor(c => c.OperatingSystem)
     </div>
