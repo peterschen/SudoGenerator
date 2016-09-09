@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SudoGenerator.Classes;
 using SudoGenerator.Models;
 
