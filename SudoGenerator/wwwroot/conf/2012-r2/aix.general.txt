@@ -1,2 +1,0 @@
-﻿# General requirements
-Defaults:{MonitoringUser} !requiretty

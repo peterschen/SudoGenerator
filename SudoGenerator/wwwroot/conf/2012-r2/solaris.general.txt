@@ -1,2 +1,0 @@
-﻿# General requirements
-Defaults:{MonitoringUser} passwd_tries = 1, passwd_timeout = 1

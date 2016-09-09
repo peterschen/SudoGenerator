@@ -1,0 +1,7 @@
+﻿# Agent maintenance (discovery, install, uninstall, upgrade, restart, certificate signing
+{MonitoringUser} ALL=(root) NOPASSWD: /opt/microsoft/scx/bin/tools/scxadmin
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-*/GetOSVersion.sh; EC=$?; rm -rf /tmp/scx-*; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c uncompress -f /tmp/scx-*
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c cat /etc/opt/microsoft/scx/ssl/scx.pem
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c echo *
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c /usr/sbin/swremove scx

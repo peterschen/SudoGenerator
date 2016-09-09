@@ -10,7 +10,7 @@ namespace SudoGenerator.Models
     {
         private static TelemetryClient telemetry = new TelemetryClient();
 
-        private const string PATH_CONFIG = "conf";
+        private const string PATH_CONFIG = "Configurations";
 
         public string ProductVersion { get; set;}
         public string OperatingSystem { get; set; }
@@ -119,6 +119,10 @@ namespace SudoGenerator.Models
             if (File.Exists(path))
             {
                 partialConfig = File.ReadAllText(path);
+            }
+            else
+            {
+                throw new FileNotFoundException(path);
             }
 
             return partialConfig;
