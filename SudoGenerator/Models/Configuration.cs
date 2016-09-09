@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
+﻿using System.IO;
 using System.Text;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.ApplicationInsights;
 
 namespace SudoGenerator.Models
 {
     public class Configuration
     {
+        private static TelemetryClient telemetry = new TelemetryClient();
+
         private const string PATH_CONFIG = "conf";
 
         public string ProductVersion { get; set;}
@@ -22,6 +25,8 @@ namespace SudoGenerator.Models
 
         public void Generate()
         {
+            telemetry.TrackEvent("Configuration.Generate() called");
+
             if(ProductVersion != null && OperatingSystem != null && !string.IsNullOrEmpty(MonitoringUser))
             {
                 HasConfiguration = true;
@@ -30,6 +35,8 @@ namespace SudoGenerator.Models
 
         public string GetConfiguration()
         {
+            telemetry.TrackEvent("Configuration.GetConfiguration() called");
+            
             var configuration = new StringBuilder();
 
             configuration.AppendLine("# -----------------------------------------------------------------------------------");
@@ -64,26 +71,31 @@ namespace SudoGenerator.Models
 
         private string GenerateConfigurationGeneral()
         {
+            telemetry.TrackEvent("Configuration.GenerateConfigurationGeneral() called");
             return ParseConfiguration("general", new Dictionary<string, string> { { "MonitoringUser", MonitoringUser } });
         }
 
         private string GenerateConfigurationMaintenance()
         {
+            telemetry.TrackEvent("Configuration.GenerateConfigurationMaintenance() called");
             return ParseConfiguration("maintenance", new Dictionary<string, string> { { "MonitoringUser", MonitoringUser } });
         }
 
         private string GenerateConfigurationLogs()
         {
+            telemetry.TrackEvent("Configuration.GenerateConfigurationLogs() called");
             return ParseConfiguration("logs", new Dictionary<string, string> { { "MonitoringUser", MonitoringUser } });
         }
 
         private string GenerateConfigurationSamples()
         {
+            telemetry.TrackEvent("Configuration.GenerateConfigurationSamples() called");
             return ParseConfiguration("samples", new Dictionary<string, string> { { "MonitoringUser", MonitoringUser } });
         }
 
         private string ParseConfiguration(string subject, Dictionary<string, string> replacements = null)
         {
+            telemetry.TrackEvent("Configuration.ParseConfiguration() called");
             string partialConfiguration = ReadConfiguration(subject);
 
             if(replacements != null)
@@ -99,6 +111,8 @@ namespace SudoGenerator.Models
 
         private string ReadConfiguration(string subject)
         {
+            telemetry.TrackEvent("Configuration.ReadConfiguration() called");
+
             string path = string.Format("{0}/{1}/{2}.{3}.txt", PATH_CONFIG, ProductVersion, OperatingSystem, subject);
             string partialConfig = string.Empty;
 
