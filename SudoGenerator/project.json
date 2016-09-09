@@ -39,6 +39,7 @@
 
   "publishOptions": {
     "include": [
+      "Configurations",
       "wwwroot",
       "Views",
       "appsettings.json",
