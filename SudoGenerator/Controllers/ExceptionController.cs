@@ -1,7 +1,5 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
-using SudoGenerator.Classes;
-using SudoGenerator.Models;
 using Microsoft.ApplicationInsights;
 
 namespace SudoGenerator.Controllers
@@ -9,8 +7,7 @@ namespace SudoGenerator.Controllers
     public class ExceptionController : Controller
     {
         public static TelemetryClient telemetry = new TelemetryClient();
-
-        [Route("Exception/Index")]
+        
         public IActionResult Index()
         {
             try
