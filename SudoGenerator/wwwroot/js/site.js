@@ -15,8 +15,8 @@ function loadData(result) {
 
         $(result).each(function () {
             $(document.createElement('option'))
-                .attr('value', this.Id)
-                .text(this.Value)
+                .attr('value', this.id)
+                .text(this.value)
                 .appendTo(dropdown);
         });
 
