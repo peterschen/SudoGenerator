@@ -4,10 +4,18 @@ $(document).ready(function () {
 });
 
 function loadData(result) {
+    var productVersion = $("#ProductVersion").val(); 
+
     var payload = {
         type: "os",
-        ProductVersion: $("#ProductVersion").val()
+        ProductVersion: productVersion
     };
+
+    if(productVersion == "2016-rtm") {
+        showOssMgmtCheckbox();
+    } else {
+        hideOssMgmtCheckbox();
+    }
 
     $.getJSON('/Home/Data', payload, function (result) {
         var selectedOperatingSysten = $('#SelectedOperatingSystem').val();
@@ -27,6 +35,15 @@ function loadData(result) {
 
         dropdown.prop("disabled", false);
     });
+}
+
+function hideOssMgmtCheckbox() {
+    $('#OssManagement input').prop('checked', false);
+    $("#OssManagement").addClass("hidden");
+}
+
+function showOssMgmtCheckbox() {
+    $("#OssManagement").removeClass("hidden");
 }
 
 $("#ProductVersion").change(function () {

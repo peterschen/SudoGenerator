@@ -20,6 +20,7 @@ namespace SudoGenerator.Models
         public bool IncludeMaintenance { get; set; }
         public bool IncludeLogs { get; set; }
         public bool IncludeSamples { get; set; }
+        public bool IncludeOssManagement { get; set; }
 
         public bool HasConfiguration { get; private set; }
 
@@ -57,6 +58,12 @@ namespace SudoGenerator.Models
                 configuration.AppendLine();
             }
 
+            if (IncludeOssManagement)
+            {
+                configuration.Append(GenerateCOnfigurationOssManagement());
+                configuration.AppendLine();
+            }
+
             if (IncludeSamples)
             { 
                 configuration.Append(GenerateConfigurationSamples());
@@ -91,6 +98,12 @@ namespace SudoGenerator.Models
         {
             telemetry.TrackEvent("Configuration.GenerateConfigurationSamples() called");
             return ParseConfiguration("samples", new Dictionary<string, string> { { "MonitoringUser", MonitoringUser } });
+        }
+
+        private string GenerateCOnfigurationOssManagement()
+        {
+            telemetry.TrackEvent("Configuration.GenerateCOnfigurationOssManagement() called");
+            return ParseConfiguration("ossmgmt", new Dictionary<string, string> { { "MonitoringUser", MonitoringUser } });
         }
 
         private string ParseConfiguration(string subject, Dictionary<string, string> replacements = null)
