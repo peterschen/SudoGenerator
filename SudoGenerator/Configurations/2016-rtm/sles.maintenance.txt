@@ -5,8 +5,10 @@
 
 ## SuSE Enterprise Linux 9
 {MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].sles.9.x[6-8][4-6].sh --install; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].sles.9.x[6-8][4-6].sh --upgrade --force; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
 
 ## SuSE Linux Enterprise Server 10/11/12
 {MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].sles.1[0|1|2].x[6-8][4-6].sh --install; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].sles.1[0|1|2].x[6-8][4-6].sh --upgrade --force; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
 
 {MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c /opt/microsoft/scx/bin/uninstall

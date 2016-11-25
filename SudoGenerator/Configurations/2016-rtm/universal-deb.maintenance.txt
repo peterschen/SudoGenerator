@@ -4,4 +4,5 @@
 {MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c cp /tmp/scx-{MonitoringUser}/scx.pem /etc/opt/microsoft/scx/ssl/scx.pem; rm -rf /tmp/scx-{MonitoringUser}; /opt/microsoft/scx/bin/tools/scxadmin -restart
 
 {MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{MonitoringUser}monuser/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].universald.1.x[6-8][4-6].sh --install; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c sh /tmp/scx-{MonitoringUser}monuser/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].universald.1.x[6-8][4-6].sh --upgrade --force; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
 {MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c /opt/microsoft/scx/bin/uninstall
