@@ -39,9 +39,10 @@ namespace SudoGenerator
             loggerFactory.AddDebug();
 
             app.UseDeveloperExceptionPage();
-            app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseApplicationInsightsRequestTelemetry();
+            // app.UseApplicationInsightsExceptionTelemetry();
+            // app.UseApplicationInsightsRequestTelemetry();
+
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
