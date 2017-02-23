@@ -6,12 +6,8 @@
   },
   
   "frameworks": {
-    "netcoreapp1.0": {
+    "net452": {
       "dependencies": {
-        "Microsoft.NETCore.App": {
-          "type": "platform",
-          "version": "1.1.0"
-        },
         "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
         "Microsoft.Extensions.Configuration": "1.1.0",
         "Microsoft.Extensions.Configuration.Json":  "1.1.0",
