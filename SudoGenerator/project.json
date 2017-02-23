@@ -8,6 +8,7 @@
   "frameworks": {
     "net462": {
       "dependencies": {
+        "System.Console": "4.3.0",
         "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
         "Microsoft.Extensions.Configuration": "1.1.0",
         "Microsoft.Extensions.Configuration.Json":  "1.1.0",
