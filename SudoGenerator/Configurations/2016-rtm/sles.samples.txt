@@ -3,5 +3,5 @@
 #{MonitoringUser} ALL=(root) NOPASSWD: /bin/bash -c <shell command>
 
 ## Daemon diagnostic and restart recovery tasks example (using cron)
-#{MonitoringUser} ALL=(root) NOPASSWD: /bin/sh -c ps -ef | grep cron | grep -v grep
+#{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c ps -ef | grep cron | grep -v grep
 #{MonitoringUser} ALL=(root) NOPASSWD: /sbin/service cron start
