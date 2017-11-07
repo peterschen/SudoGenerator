@@ -1,0 +1,19 @@
+﻿# Agent maintenance (discovery, install, uninstall, upgrade, restart, certificate signing
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c cp /tmp/scx-{MonitoringUser}/scx.pem /etc/opt/microsoft/scx/ssl/scx.pem; rm -rf /tmp/scx-{MonitoringUser}; /opt/microsoft/scx/bin/tools/scxadmin -restart
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c cat /etc/opt/microsoft/scx/ssl/scx.pem
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c /opt/microsoft/scx/bin/uninstall
+
+## Solaris 9
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c echo -e \"mail=*/usr/sbin/pkgadd -a /tmp/scx-{MonitoringUser}/scx -n -d /tmp/scx-{MonitoringUser}/scx-1.[0-9].[0-9]-[0-9][0-9][0-9].solaris.9.sparc.pkg MSFTscx;*exit ?EC
+
+## Solaris 10
+comadm ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.10.sparc.sh --install *
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.10.sparc.sh --upgrade --force *
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.10.x86.sh --install *
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.10.x86.sh --upgrade --force *
+
+## Solaris 10
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.1[[\:digit\:]].x86.sh --install ; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.1[[\:digit\:]].x86.sh --upgrade --force ; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.1[[\:digit\:]].sparc.sh --install ; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
+{MonitoringUser} ALL=(root) NOPASSWD: /usr/bin/sh -c sh /tmp/scx-{MonitoringUser}/scx-1.[5-9].[0-9]-[0-9][0-9][0-9].solaris.1[[\:digit\:]].sparc.sh --upgrade --force ; EC=$?; cd /tmp; rm -rf /tmp/scx-{MonitoringUser}; exit $EC
