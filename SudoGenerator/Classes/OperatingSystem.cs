@@ -18,7 +18,7 @@ namespace SudoGenerator.Classes
 
         public static readonly List<OperatingSystem> SC2012RTM = new List<OperatingSystem> { AIX, HPUX, LINUX, SOLARIS };
         public static readonly List<OperatingSystem> SC2012R2 = new List<OperatingSystem> { AIX, HPUX, RHEL, SLES, SOLARIS, DEB, RPM };
-        public static readonly List<OperatingSystem> SC2016RTM = new List<OperatingSystem> { AIX, SLES, DEB };
+        public static readonly List<OperatingSystem> SC2016RTM = new List<OperatingSystem> { AIX, HPUX, SLES, DEB };
 
         public OperatingSystem(string id, string value)
         {
