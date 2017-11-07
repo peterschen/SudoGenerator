@@ -8,7 +8,7 @@ namespace SudoGenerator.Controllers
     {
         public IActionResult Index()
         {
-            return View(new Configuration { ProductVersion = "2012-r2" });
+            return View(new Configuration { ProductVersion = "2016-rtm", OperatingSystem = "universal-deb" });
         }
 
         public IActionResult Configuration(Configuration configuration)
