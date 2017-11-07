@@ -19,6 +19,8 @@
     "dateformat": "1.0.12"
   },
   "dependencies": {
-    "homedir-polyfill": "^1.0.1"
+    "homedir-polyfill": "^1.0.1",
+    "is-number": "^4.0.0",
+    "liftoff": "^2.3.0"
   }
 }
