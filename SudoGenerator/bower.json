@@ -1,5 +1,5 @@
 {
-  "name": "SudoGenerator",
+  "name": "peterschen-sudogenerator",
   "private": true,
   "dependencies": {
     "bootstrap": "3.3.5",
